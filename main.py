@@ -1,7 +1,7 @@
 from pathlib import Path
-from typing import Type
+from typing import Any
 
-from tabulate import tabulate
+from tabulate import tabulate  # type: ignore
 
 from models.Contact import Contact
 from service.Phonebook import PhoneBook
@@ -30,12 +30,12 @@ def request_contact_info() -> Contact:
     )
 
 
-def list_to_tabulate_str(data: list) -> str:
-    return tabulate(data, headers, tablefmt='grid')
+def list_to_tabulate_str(data: list[str]) -> str:
+    return str(tabulate(data, headers, tablefmt='grid'))
 
 
-def contacts_list_to_tabulate_str(data: list) -> str:
-    return tabulate([x.to_list() for x in data], headers, tablefmt='grid')
+def contacts_list_to_tabulate_str(data: list[Any]) -> str:
+    return str(tabulate([x.to_list() for x in data], headers, tablefmt='grid'))
 
 
 page = 1
@@ -91,7 +91,6 @@ while True:
 
     # edit user
     if option == "4":
-        search_contact: Contact = Type[Contact]
         name = input("Найдем абонента. Введите: поле=что ищем: ").split("=")
         search = f"{name[0]}={name[1]}"
         criteria = create_criteria(search)
@@ -100,7 +99,6 @@ while True:
             print("Ничего не найдено")
             continue
         if len(result) > 1:
-            array = []
             print("Найдено более 1 записи, выберите номер нужной")
             for i, contact in enumerate(result):
                 print(f" {i} : {contact.to_str()}")

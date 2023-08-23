@@ -8,7 +8,7 @@ def create_criteria(searching: str) -> dict[str, str]:
     Returns:
         dict[str, str]: A dictionary containing the key-value pairs extracted from the searching string.
     """
-    options: dict = {}
+    options: dict[str, str] = {}
     terms = searching.split(",")
     for term in terms:
         column, value = term.split("=")

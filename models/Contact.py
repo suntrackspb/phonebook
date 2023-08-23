@@ -6,7 +6,7 @@ class Contact:
                  organization: str,
                  work_phone: str,
                  personal_phone: str,
-                 ):
+                 ) -> None:
         self.last_name = last_name.capitalize()
         self.first_name = first_name.capitalize()
         self.middle_name = middle_name.capitalize()
@@ -14,7 +14,7 @@ class Contact:
         self.work_phone = work_phone
         self.personal_phone = personal_phone
 
-    def to_list(self):
+    def to_list(self) -> list[str]:
         """
         Return a list containing the last name, first name, middle name, organization, work phone,
         and personal phone of the object.
@@ -22,7 +22,7 @@ class Contact:
         return [self.last_name, self.first_name, self.middle_name, self.organization, self.work_phone,
                 self.personal_phone]
 
-    def to_str(self):
+    def to_str(self) -> str:
         """
         Return a string containing the last name, first name, middle name, organization, work phone,
         and personal phone of the object.

@@ -9,7 +9,7 @@ from utils.console import clear_console
 from utils.criteria import create_criteria
 from utils.header import headers
 
-db = Path("data/data.txt")
+db = Path("data/base.txt")
 worker = PhoneBook(db)
 
 
